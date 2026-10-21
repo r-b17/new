@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rishika Banerjee — Studio of One | Brand Strategy, Storytelling & CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Palette 3: Salmon Pink & Teal Green — Strictly Locked & High-Contrast */
+      --teal-deep: #243836;
+      --teal-main: #3D5B59;
+      --teal-elevated: #2F4846;
+      --teal-card: rgba(47, 72, 70, 0.72);
+      --salmon: #FCB5AC;
+      --salmon-bright: #FFD2CC;
+      --salmon-soft: #FDE8E5;
+      --cream: #FFF6F4;
+      --salmon-muted: rgba(252, 181, 172, 0.72);
+      --border-line: rgba(252, 181, 172, 0.24);
+      --border-strong: rgba(252, 181, 172, 0.65);
+
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--teal-main);
+      color: var(--cream);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      selection-background-color: var(--salmon);
+      selection-color: var(--teal-deep);
+    }
+
+    ::selection {
+      background: var(--salmon);
+      color: var(--teal-deep);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 12%, rgba(252, 181, 172, 0.14) 0%, transparent 42%),
+        radial-gradient(circle at 85% 30%, rgba(25, 42, 40, 0.6) 0%, transparent 50%),
+        linear-gradient(180deg, #3D5B59 0%, #2C4442 52%, #3D5B59 100%);
+      color: var(--cream);
+      min-height: 100vh;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* Tactile Editorial Film Grain Overlay */
+    .grain-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Custom Nika Stern Floating Pill Cursor */
+    .cursor-pill {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%) scale(0.85);
+      background: var(--salmon);
+      color: var(--teal-deep);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 6px 14px;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.25s var(--ease-out-expo), transform 0.25s var(--ease-out-expo);
+      box-shadow: 0 10px 28px rgba(18, 30, 29, 0.45);
+      white-space: nowrap;
+    }
+
+    .cursor-pill.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Top Live Ticker Bar */
+    .top-ticker {
+      border-bottom: 1px solid var(--border-line);
+      background: rgba(36, 56, 54, 0.75);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      padding: 9px 0;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--salmon);
+      letter-spacing: 0.04em;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 34s linear infinite;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 28px;
+      white-space: nowrap;
+    }
+
+    .ticker-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--salmon);
+      display: inline-block;
+      box-shadow: 0 0 10px var(--salmon);
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Sticky Editorial Navigation */
+    header.site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 4vw;
+      background: rgba(47, 72, 70, 0.84);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-line);
+      transition: padding 0.3s ease;
+    }
+
+    .brand-id {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--cream);
+    }
+
+    .brand-id .name {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      letter-spacing: 0.01em;
+      color: var(--salmon);
+    }
+
+    .brand-id .tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--salmon-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a, .nav-btn {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--cream);
+      text-decoration: none;
+      padding: 7px 13px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      transition: all 0.25s var(--ease-out-expo);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .nav-links a span {
+      color: var(--salmon);
+      margin-right: 4px;
+    }
+
+    .nav-links a:hover, .nav-btn:hover {
+      border-color: var(--salmon);
+      background: rgba(252, 181, 172, 0.12);
+      color: var(--salmon);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.primary {
+      background: var(--salmon);
+      color: var(--teal-deep);
+      font-weight: 500;
+    }
+
+    .nav-btn.primary:hover {
+      background: var(--salmon-bright);
+      color: var(--teal-deep);
+      box-shadow: 0 6px 20px rgba(252, 181, 172, 0.35);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 4vw;
+    }
+
+    /* Scroll Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Hero Section — Nika Stern Editorial Split */
+    .hero {
+      padding: 64px 0 56px;
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    .hero-top-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding-bottom: 38px;
+      margin-bottom: 44px;
+      border-bottom: 1px solid var(--border-line);
+      font-size: 0.83rem;
+    }
+
+    .meta-card {
+      background: rgba(36, 56, 54, 0.45);
+      border: 1px solid var(--border-line);
+      padding: 16px 18px;
+      border-radius: 12px;
+      transition: transform 0.35s var(--ease-out-expo), border-color 0.35s ease;
+    }
+
+    .meta-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--salmon);
+    }
+
+    .meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--salmon);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .meta-value {
+      color: var(--cream);
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .hero-main-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.85fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(3.1rem, 6.4vw, 6.1rem);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      color: var(--salmon);
+      margin-bottom: 26px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--cream);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-headline .underline-accent {
+      border-bottom: 2px solid var(--salmon);
+      padding-bottom: 2px;
+    }
+
+    .hero-subcopy {
+      font-size: clamp(1.02rem, 1.35vw, 1.22rem);
+      color: var(--salmon-soft);
+      max-width: 660px;
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+
+    /* Pillar Index Pills (Nika Stern style) */
+    .pillar-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .pillar-chip {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: rgba(36, 56, 54, 0.65);
+      color: var(--cream);
+      cursor: pointer;
+      transition: all 0.25s var(--ease-out-expo);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pillar-chip span.count {
+      color: var(--salmon);
+      font-weight: 600;
+    }
+
+    .pillar-chip.active,
+    .pillar-chip:hover {
+      background: var(--salmon);
+      color: var(--teal-deep);
+      border-color: var(--salmon);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(252, 181, 172, 0.28);
+    }
+
+    .pillar-chip.active span.count,
+    .pillar-chip:hover span.count {
+      color: var(--teal-deep);
+    }
+
+    /* Hero Editorial Collage Card */
+    .hero-visual-stack {
+      position: relative;
+      height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .collage-card {
+      position: absolute;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-strong);
+      box-shadow: 0 24px 50px rgba(18, 30, 29, 0.5);
+      transition: all 0.55s var(--ease-out-expo);
+      background: var(--teal-deep);
+    }
+
+    .collage-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.95) contrast(1.04);
+      transition: transform 0.65s var(--ease-out-expo);
+    }
+
+    .collage-card:hover img {
+      transform: scale(1.07);
+    }
+
+    .collage-card .card-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(36, 56, 54, 0.88);
+      backdrop-filter: blur(8px);
+      padding: 7px 11px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--salmon);
+      border: 1px solid var(--border-line);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .collage-1 {
+      width: 280px;
+      height: 350px;
+      z-index: 3;
+      transform: rotate(-3deg) translate(-20px, 0);
+    }
+
+    .collage-2 {
+      width: 240px;
+      height: 300px;
+      z-index: 2;
+      transform: rotate(6deg) translate(95px, -30px);
+    }
+
+    .collage-3 {
+      width: 220px;
+      height: 260px;
+      z-index: 1;
+      transform: rotate(-8deg) translate(-105px, 45px);
+    }
+
+    .hero-visual-stack:hover .collage-1 {
+      transform: rotate(0deg) translate(-10px, -8px) scale(1.03);
+    }
+    .hero-visual-stack:hover .collage-2 {
+      transform: rotate(9deg) translate(135px, -40px);
+    }
+    .hero-visual-stack:hover .collage-3 {
+      transform: rotate(-11deg) translate(-140px, 55px);
+    }
+
+    /* Section Headers (Nika Stern Index Style) */
+    .section-block {
+      padding: 82px 0;
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .section-index {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--salmon);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.3vw, 4rem);
+      font-weight: 400;
+      line-height: 1.04;
+      color: var(--salmon);
+    }
+
+    .section-title em {
+      color: var(--cream);
+      font-style: italic;
+    }
+
+    .section-note {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--salmon-muted);
+      max-width: 390px;
+    }
+
+    /* [ 01 ] Approach — 3 Editorial Columns */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .approach-card {
+      background: rgba(36, 56, 54, 0.55);
+      border: 1px solid var(--border-line);
+      border-radius: 16px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    .approach-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--salmon), transparent);
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .approach-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--salmon);
+      background: rgba(36, 56, 54, 0.85);
+      box-shadow: 0 20px 40px rgba(18, 30, 29, 0.4);
+    }
+
+    .approach-card:hover::before {
+      opacity: 1;
+    }
+
+    .approach-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--salmon);
+      margin-bottom: 16px;
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid var(--border-line);
+      border-radius: 999px;
+    }
+
+    .approach-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: var(--salmon);
+      margin-bottom: 12px;
+    }
+
+    .approach-card p {
+      font-size: 0.94rem;
+      color: var(--salmon-soft);
+      line-height: 1.65;
+    }
+
+    /* [ 02 ] Selected Worlds — Editorial Case Cards with Rich Imagery */
+    .cases-list {
+      display: flex;
+      flex-direction: column;
+      gap: 54px;
+    }
+
+    .case-world {
+      background: rgba(36, 56, 54, 0.62);
+      border: 1px solid var(--border-line);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: border-color 0.4s ease, transform 0.45s var(--ease-out-expo), box-shadow 0.45s var(--ease-out-expo);
+    }
+
+    .case-world:hover {
+      border-color: var(--salmon);
+      transform: translateY(-4px);
+      box-shadow: 0 26px 60px rgba(16, 28, 27, 0.55);
+    }
+
+    .case-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--border-line);
+      background: rgba(28, 45, 43, 0.65);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--salmon);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .case-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 4px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--border-line);
+      background: rgba(252, 181, 172, 0.1);
+      color: var(--salmon-soft);
+    }
+
+    .case-body {
+      display: grid;
+      grid-template-columns: 1.05fr 1.15fr;
+      gap: 0;
+    }
+
+    .case-world:nth-child(even) .case-body {
+      grid-template-columns: 1.15fr 1.05fr;
+    }
+
+    .case-world:nth-child(even) .case-visual-col {
+      order: 2;
+      border-right: none;
+      border-left: 1px solid var(--border-line);
+    }
+
+    .case-visual-col {
+      position: relative;
+      min-height: 410px;
+      border-right: 1px solid var(--border-line);
+      overflow: hidden;
+      background: var(--teal-deep);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .case-main-img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      transition: transform 0.85s var(--ease-out-expo), filter 0.6s ease;
+      filter: brightness(0.84) contrast(1.06);
+    }
+
+    .case-world:hover .case-main-img {
+      transform: scale(1.06);
+      filter: brightness(0.92) contrast(1.08);
+    }
+
+    .case-img-overlay {
+      position: relative;
+      z-index: 2;
+      margin-top: auto;
+      padding: 22px;
+      background: linear-gradient(180deg, transparent 0%, rgba(24, 39, 37, 0.94) 100%);
+    }
+
+    /* Mini Secondary Image Thumbnails inside Case */
+    .case-thumb-strip {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .case-thumb {
+      width: 68px;
+      height: 50px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1.5px solid var(--salmon);
+      cursor: pointer;
+      opacity: 0.75;
+      transition: all 0.25s ease;
+    }
+
+    .case-thumb:hover, .case-thumb.active-thumb {
+      opacity: 1;
+      transform: scale(1.06);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .case-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .visual-caption {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--salmon);
+    }
+
+    .case-content-col {
+      padding: 36px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .case-client {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--salmon);
+      margin-bottom: 8px;
+    }
+
+    .case-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.08;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    .case-headline em {
+      color: var(--salmon);
+      font-style: italic;
+    }
+
+    /* Nika Stern 3-Part Breakdown: The Idea / Strategic Direction / Studio Notes */
+    .narrative-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .narrative-item {
+      padding-left: 14px;
+      border-left: 2px solid var(--salmon);
+    }
+
+    .narrative-label {
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      color: var(--salmon);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .narrative-text {
+      font-size: 0.92rem;
+      color: var(--salmon-soft);
+      line-height: 1.6;
+    }
+
+    .case-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-line);
+      align-items: center;
+    }
+
+    .btn-editorial {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--salmon);
+      background: var(--salmon);
+      color: var(--teal-deep);
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s var(--ease-out-expo);
+      cursor: pointer;
+    }
+
+    .btn-editorial:hover {
+      background: var(--salmon-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(252, 181, 172, 0.3);
+    }
+
+    .btn-editorial.ghost {
+      background: transparent;
+      color: var(--salmon);
+      border-color: var(--border-strong);
+    }
+
+    .btn-editorial.ghost:hover {
+      background: rgba(252, 181, 172, 0.14);
+      border-color: var(--salmon);
+    }
+
+    /* [ 03 ] Archive & Published Research (Theses + Accor + AXA + Experiments) */
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .archive-card {
+      background: rgba(36, 56, 54, 0.58);
+      border: 1px solid var(--border-line);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s var(--ease-out-expo);
+    }
+
+    .archive-card:hover {
+      border-color: var(--salmon);
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(18, 30, 29, 0.45);
+    }
+
+    .archive-img-wrap {
+      height: 190px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    .archive-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.65s var(--ease-out-expo);
+      filter: brightness(0.86);
+    }
+
+    .archive-card:hover .archive-img-wrap img {
+      transform: scale(1.07);
+    }
+
+    .archive-tag-overlay {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(36, 56, 54, 0.88);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--salmon);
+      color: var(--salmon);
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .archive-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .archive-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 400;
+      color: var(--salmon);
+      margin-bottom: 8px;
+    }
+
+    .archive-body p {
+      font-size: 0.89rem;
+      color: var(--salmon-soft);
+      margin-bottom: 18px;
+      line-height: 1.58;
+    }
+
+    /* [ 04 ] Geographies & Foundations — Interactive Route Map */
+    .geo-timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .geo-stop {
+      background: rgba(36, 56, 54, 0.55);
+      border: 1px solid var(--border-line);
+      border-radius: 16px;
+      padding: 22px 18px;
+      position: relative;
+      transition: all 0.35s var(--ease-out-expo);
+      cursor: pointer;
+    }
+
+    .geo-stop:hover, .geo-stop.active-stop {
+      border-color: var(--salmon);
+      background: rgba(252, 181, 172, 0.13);
+      transform: translateY(-4px);
+    }
+
+    .geo-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--salmon);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .geo-city {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .geo-desc {
+      font-size: 0.82rem;
+      color: var(--salmon-soft);
+      line-height: 1.48;
+    }
+
+    .ieseg-feature-bar {
+      background: linear-gradient(90deg, rgba(36, 56, 54, 0.85), rgba(47, 72, 70, 0.85));
+      border: 1px solid var(--salmon);
+      border-radius: 18px;
+      padding: 28px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .ieseg-feature-bar h4 {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--salmon);
+      margin-bottom: 6px;
+    }
+
+    .ieseg-feature-bar p {
+      font-size: 0.9rem;
+      color: var(--salmon-soft);
+      max-width: 720px;
+    }
+
+    /* [ 05 ] Outside the Brief / Studio Notes (Personality & Vibe) */
+    .vibe-bento {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1fr;
+      gap: 22px;
+    }
+
+    .vibe-card {
+      background: rgba(36, 56, 54, 0.6);
+      border: 1px solid var(--border-line);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    .vibe-card:hover {
+      border-color: var(--salmon);
+      transform: translateY(-5px);
+    }
+
+    .vibe-img {
+      height: 210px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    .vibe-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out-expo);
+    }
+
+    .vibe-card:hover .vibe-img img {
+      transform: scale(1.06);
+    }
+
+    .vibe-content {
+      padding: 24px;
+    }
+
+    .vibe-content h3 {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--salmon);
+      margin-bottom: 10px;
+    }
+
+    .vibe-content p {
+      font-size: 0.9rem;
+      color: var(--salmon-soft);
+      line-height: 1.6;
+    }
+
+    /* Interactive Meme / Brain Translator Strip */
+    .meme-translator {
+      margin-top: 26px;
+      background: rgba(28, 45, 43, 0.75);
+      border: 1px dashed var(--salmon);
+      border-radius: 16px;
+      padding: 22px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .meme-quote {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--cream);
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer.site-footer {
+      padding: 84px 0 60px;
+      text-align: center;
+    }
+
+    .footer-big-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 6.2rem);
+      font-weight: 400;
+      color: var(--salmon);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    /* Modal for Case Deep-Dive & PDF Guide */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(16, 27, 26, 0.82);
+      backdrop-filter: blur(12px);
+      z-index: 9500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--teal-deep);
+      border: 1px solid var(--salmon);
+      border-radius: 20px;
+      max-width: 720px;
+      width: 100%;
+      padding: 34px;
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-line);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h3 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--salmon);
+      font-weight: 400;
+    }
+
+    .close-modal {
+      background: transparent;
+      border: 1px solid var(--salmon);
+      color: var(--salmon);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .pdf-list-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 0.85rem;
+    }
+
+    .pdf-list-table th, .pdf-list-table td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    .pdf-list-table code {
+      font-family: var(--font-mono);
+      color: var(--salmon);
+      background: rgba(252, 181, 172, 0.12);
+      padding: 3px 7px;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-top-meta { grid-template-columns: repeat(2, 1fr); }
+      .hero-main-grid { grid-template-columns: 1fr; }
+      .hero-visual-stack { height: 360px; margin-top: 10px; }
+      .approach-grid { grid-template-columns: 1fr; }
+      .case-body, .case-world:nth-child(even) .case-body { grid-template-columns: 1fr; }
+      .case-world:nth-child(even) .case-visual-col { order: 0; border-left: none; border-bottom: 1px solid var(--border-line); }
+      .case-visual-col { min-height: 300px; border-right: none; border-bottom: 1px solid var(--border-line); }
+      .archive-grid { grid-template-columns: 1fr; }
+      .geo-timeline { grid-template-columns: 1fr 1fr; }
+      .vibe-bento { grid-template-columns: 1fr; }
+      .cursor-pill { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Film Grain Overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- Custom Floating Cursor Pill -->
+  <div class="cursor-pill" id="cursorPill">[ Explore World ↗ ]</div>
+
+  <!-- Live Top Marquee Ticker -->
+  <div class="top-ticker">
+    <div class="ticker-track">
+      <div class="ticker-item"><span class="ticker-dot"></span> RISHIKA BANERJEE — STUDIO OF ONE</div>
+      <div class="ticker-item">[ STORIES THAT BUILD TRUST & STRATEGY THAT MOVES PEOPLE ]</div>
+      <div class="ticker-item">KOLKATA → MUMBAI → LILLE → GERMANY → INDIA</div>
+      <div class="ticker-item">[ BRAND & CSR STRATEGY • STORYTELLING & CAMPAIGNS • CRM & STAKEHOLDER ALIGNMENT ]</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> EQUAL PARTS ANALYTICAL & HUMAN</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="ticker-item"><span class="ticker-dot"></span> RISHIKA BANERJEE — STUDIO OF ONE</div>
+      <div class="ticker-item">[ STORIES THAT BUILD TRUST & STRATEGY THAT MOVES PEOPLE ]</div>
+      <div class="ticker-item">KOLKATA → MUMBAI → LILLE → GERMANY → INDIA</div>
+      <div class="ticker-item">[ BRAND & CSR STRATEGY • STORYTELLING & CAMPAIGNS • CRM & STAKEHOLDER ALIGNMENT ]</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> EQUAL PARTS ANALYTICAL & HUMAN</div>
+    </div>
+  </div>
+
+  <!-- Sticky Editorial Header -->
+  <header class="site-nav">
+    <a href="#top" class="brand-id">
+      <span class="name">Rishika Banerjee</span>
+      <span class="tag">[ Studio Index / 2026 ]</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#approach"><span>[ 01 ]</span>Approach</a>
+      <a href="#worlds"><span>[ 02 ]</span>Selected Worlds</a>
+      <a href="#archive"><span>[ 03 ]</span>Research & Archive</a>
+      <a href="#geographies"><span>[ 04 ]</span>Route</a>
+      <a href="#vibe"><span>[ 05 ]</span>Outside the Brief</a>
+      <button class="nav-btn" onclick="openPdfGuide()">[ Link Your PDFs ]</button>
+      <a href="mailto:rishika.banerjee99@gmail.com" class="nav-btn primary">Say Hello ↗</a>
+    </nav>
+  </header>
+
+  <main id="top" class="container">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <!-- Nika Stern Live Status Bar -->
+      <div class="hero-top-meta reveal">
+        <div class="meta-card">
+          <span class="meta-label">[ Positioning ]</span>
+          <div class="meta-value">Brand Strategy, High-Impact Storytelling, Sustainable CSR & CRM Alignment.</div>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">[ The Method ]</span>
+          <div class="meta-value">Strategic empathy + cultural intuition + AI-assisted narrative craft.</div>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">[ Geographies ]</span>
+          <div class="meta-value">Shaped in Lille (IÉSEG), Germany (Adidas) & the Netherlands; rooted in India.</div>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">[ Brain Mode ]</span>
+          <div class="meta-value">Equal parts chill & serious. Speaks fluent corporate ethics and internet memes.</div>
+        </div>
+      </div>
+
+      <div class="hero-main-grid">
+        <div class="hero-copy-col reveal reveal-delay-1">
+          <h1 class="hero-headline">
+            Stories that build <em>genuine trust.</em><br>
+            Strategy that sees the <span class="underline-accent">human side</span>.
+          </h1>
+          <p class="hero-subcopy">
+            I’m Rishika—a strategist and storyteller who bridges complex data, sustainability, and internal alignment with cultural warmth. Not a chronological résumé of cold metrics, but an archive of how brands communicate, care, and grow.
+          </p>
+
+          <div class="meta-label" style="margin-bottom: 10px;">[ Filter by Core Pillar ]</div>
+          <div class="pillar-bar" id="pillarFilters">
+            <button class="pillar-chip active" data-filter="all">All Worlds <span class="count">[08]</span></button>
+            <button class="pillar-chip" data-filter="brand-csr">Brand & CSR Strategy <span class="count">[04]</span></button>
+            <button class="pillar-chip" data-filter="storytelling">Storytelling & Campaigns <span class="count">[02]</span></button>
+            <button class="pillar-chip" data-filter="crm-alignment">CRM & Stakeholder Alignment <span class="count">[02]</span></button>
+          </div>
+        </div>
+
+        <!-- Interactive Floating Editorial Collage -->
+        <div class="hero-visual-stack reveal reveal-delay-2" data-cursor="[ Hover to Fan Cards ]">
+          <div class="collage-card collage-3">
+            <img src="https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2?auto=format&fit=crop&w=800&q=80" alt="EcoClipper Zero Emission Tall Ship" />
+            <div class="card-caption"><span>ECOCLIPPER</span><span>[ NL ]</span></div>
+          </div>
+          <div class="collage-card collage-2">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80" alt="Maybelline Inclusive CSR" />
+            <div class="card-caption"><span>MAYBELLINE CSR</span><span>[ FR ]</span></div>
+          </div>
+          <div class="collage-card collage-1">
+            <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=900&q=80" alt="Adidas Global Digital Strategy" />
+            <div class="card-caption"><span>ADIDAS AG</span><span>[ DE ]</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- [ 01 ] APPROACH SECTION -->
+    <section id="approach" class="section-block">
+      <div class="section-header reveal">
+        <div>
+          <span class="section-index">[ 01 / How My Brain Works ]</span>
+          <h2 class="section-title">Three ingredients behind <em>every brief</em></h2>
+        </div>
+        <p class="section-note">
+          Data without empathy is noise; storytelling without strategy is just decoration. Here is how I connect the two.
+        </p>
+      </div>
+
+      <div class="approach-grid">
+        <article class="approach-card reveal">
+          <span class="approach-num">INGREDIENT 01</span>
+          <h3>Strategic Empathy</h3>
+          <p>
+            Whether it’s aligning sales and project teams inside Adidas or building a crowdfunding narrative for eco-conscious investors, I start with how real humans actually read, feel, and act—turning dense insights into clarity people care about.
+          </p>
+        </article>
+        <article class="approach-card reveal reveal-delay-1">
+          <span class="approach-num">INGREDIENT 02</span>
+          <h3>Cultural & Ethical Intuition</h3>
+          <p>
+            Shaped across Kolkata, Mumbai, Lille, Germany, and the Netherlands, I look at brands through a conscious, cross-cultural lens—crafting CSR frameworks, solidarity strategies, and sustainable positioning that feel authentic, never performative.
+          </p>
+        </article>
+        <article class="approach-card reveal reveal-delay-2">
+          <span class="approach-num">INGREDIENT 03</span>
+          <h3>AI-Assisted Narrative Craft</h3>
+          <p>
+            Using modern AI workflows, pacing experiments, and digital analytics as an accelerator—not a replacement—for human taste, editorial sharpness, and high-retention storytelling.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- [ 02 ] SELECTED WORLDS (MAIN VISUAL PORTFOLIO) -->
+    <section id="worlds" class="section-block">
+      <div class="section-header reveal">
+        <div>
+          <span class="section-index">[ 02 / Selected Case Worlds ]</span>
+          <h2 class="section-title">Projects framed by <em>the real problem</em></h2>
+        </div>
+        <p class="section-note">
+          Click the thumbnail strips inside each world to switch visual perspectives, or open the attached strategy decks & reports.
+        </p>
+      </div>
+
+      <div class="cases-list" id="casesContainer">
+
+        <!-- CASE 01: ADIDAS AG -->
+        <article class="case-world reveal" data-category="crm-alignment" data-cursor="[ Adidas World ↗ ]">
+          <div class="case-top-bar">
+            <span>[ WORLD 01 — HERZOGENAURACH, GERMANY ]</span>
+            <div class="case-badges">
+              <span class="badge">CRM & Stakeholder Alignment</span>
+              <span class="badge">Internal UX & Portfolio Redesign</span>
+              <span class="badge">Master's Practice Report</span>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-visual-col">
+              <img class="case-main-img" id="img-adidas" src="https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=1200&q=80" alt="Adidas Brand Architecture & Strategy" />
+              <div class="case-img-overlay">
+                <div class="case-thumb-strip">
+                  <div class="case-thumb active-thumb" onclick="swapCaseImg('img-adidas', 'https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=1200&q=80', 'caption-adidas', 'Fig 1.1 — Global Sportswear & Digital Ecosystem', this)">
+                    <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=300&q=60" alt="Adidas 1" />
+                  </div>
+                  <div class="case-thumb" onclick="swapCaseImg('img-adidas', 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80', 'caption-adidas', 'Fig 1.2 — Product Storytelling & Consumer Touchpoints', this)">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=60" alt="Adidas 2" />
+                  </div>
+                  <div class="case-thumb" onclick="swapCaseImg('img-adidas', 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80', 'caption-adidas', 'Fig 1.3 — Cross-Functional Stakeholder & UX Hub Alignment', this)">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=300&q=60" alt="Adidas 3" />
+                  </div>
+                </div>
+                <div class="visual-caption" id="caption-adidas">Fig 1.1 — Global Sportswear & Digital Ecosystem</div>
+              </div>
+            </div>
+
+            <div class="case-content-col">
+              <div>
+                <div class="case-client">ADIDAS AG • DIGITAL STRATEGIC PLANNING</div>
+                <h3 class="case-headline">Turning complex internal data into <em>human-centered alignment</em> & seamless UX</h3>
+
+                <div class="narrative-grid">
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ The Real Problem ]</div>
+                    <p class="narrative-text">
+                      Sales and project teams were operating across fragmented communication channels, and the internal digital resource hub felt like a maze—slowing down onboarding and burying vital strategic insights under raw data.
+                    </p>
+                  </div>
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ Strategic & UX Direction ]</div>
+                    <p class="narrative-text">
+                      Overhauled the communication architecture between sales and project teams, redesigned the internal digital portfolio & resource hub for intuitive accessibility, and translated heavy data into persuasive, human-first narratives.
+                    </p>
+                  </div>
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ Studio Notes & Extended Study ]</div>
+                    <p class="narrative-text">
+                      Paired hands-on execution in Germany with an in-depth Master’s Practice Report dissecting Adidas’s broader Digital Marketing, CRM, and Corporate Social Responsibility (CSR) ecosystem.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="case-actions">
+                <a href="./pdfs/adidas-strategy.pdf" target="_blank" class="btn-editorial">Open Adidas Strategy Deck (PDF) ↗</a>
+                <a href="./pdfs/adidas-masters-thesis.pdf" target="_blank" class="btn-editorial ghost">[ Read Adidas CRM & CSR Thesis ]</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CASE 02: ECOCLIPPER -->
+        <article class="case-world reveal" data-category="storytelling" data-cursor="[ EcoClipper World ↗ ]">
+          <div class="case-top-bar">
+            <span>[ WORLD 02 — THE NETHERLANDS ]</span>
+            <div class="case-badges">
+              <span class="badge">Storytelling & Campaigns</span>
+              <span class="badge">Sustainable Go-To-Market</span>
+              <span class="badge">Crowdfunding & Brand Identity</span>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-visual-col">
+              <img class="case-main-img" id="img-ecoclipper" src="https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2?auto=format&fit=crop&w=1200&q=80" alt="EcoClipper Sail Cargo & Sustainable Shipping" />
+              <div class="case-img-overlay">
+                <div class="case-thumb-strip">
+                  <div class="case-thumb active-thumb" onclick="swapCaseImg('img-ecoclipper', 'https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2?auto=format&fit=crop&w=1200&q=80', 'caption-ecoclipper', 'Fig 2.1 — Emission-Free Tall Ship Cargo & Travel Vision', this)">
+                    <img src="https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2?auto=format&fit=crop&w=300&q=60" alt="EcoClipper 1" />
+                  </div>
+                  <div class="case-thumb" onclick="swapCaseImg('img-ecoclipper', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80', 'caption-ecoclipper', 'Fig 2.2 — Transparent Ocean Storytelling for Eco-Investors', this)">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=60" alt="EcoClipper 2" />
+                  </div>
+                  <div class="case-thumb" onclick="swapCaseImg('img-ecoclipper', 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80', 'caption-ecoclipper', 'Fig 2.3 — Crowdfunding Go-To-Market & Brand Guidelines', this)">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=300&q=60" alt="EcoClipper 3" />
+                  </div>
+                </div>
+                <div class="visual-caption" id="caption-ecoclipper">Fig 2.1 — Emission-Free Tall Ship Cargo & Travel Vision</div>
+              </div>
+            </div>
+
+            <div class="case-content-col">
+              <div>
+                <div class="case-client">ECOCLIPPER • MARKETING & COMMUNICATION</div>
+                <h3 class="case-headline">Making zero-emission shipping feel <em>inevitable, human, and investable</em></h3>
+
+                <div class="narrative-grid">
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ The Real Problem ]</div>
+                    <p class="narrative-text">
+                      Reviving traditional wind-powered tall ships for modern sustainable cargo and passenger travel sounds romantic—but convincing skeptical niche investors and eco-conscious communities required rock-solid trust and cohesive brand identity.
+                    </p>
+                  </div>
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ Strategic & Narrative Direction ]</div>
+                    <p class="narrative-text">
+                      Led values-driven social storytelling rooted in radical transparency, established core brand identity guidelines, and translated market research into actionable go-to-market and crowdfunding blueprints.
+                    </p>
+                  </div>
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ Studio Notes ]</div>
+                    <p class="narrative-text">
+                      Proved that sustainability marketing works best when you skip greenwashing buzzwords and let the craft, community, and real economics speak for themselves.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="case-actions">
+                <a href="./pdfs/ecoclipper-storytelling.pdf" target="_blank" class="btn-editorial">Open EcoClipper Project PDF ↗</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CASE 03: MAYBELLINE -->
+        <article class="case-world reveal" data-category="brand-csr" data-cursor="[ Maybelline World ↗ ]">
+          <div class="case-top-bar">
+            <span>[ WORLD 03 — FRANCE / GLOBAL BEAUTY ]</span>
+            <div class="case-badges">
+              <span class="badge">Brand & CSR Strategy</span>
+              <span class="badge">Community Inclusion</span>
+              <span class="badge">Ethical Positioning</span>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-visual-col">
+              <img class="case-main-img" id="img-maybelline" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="Maybelline CSR & Inclusive Beauty" />
+              <div class="case-img-overlay">
+                <div class="case-thumb-strip">
+                  <div class="case-thumb active-thumb" onclick="swapCaseImg('img-maybelline', 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80', 'caption-maybelline', 'Fig 3.1 — Inclusive Beauty & Community Belonging', this)">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=300&q=60" alt="Maybelline 1" />
+                  </div>
+                  <div class="case-thumb" onclick="swapCaseImg('img-maybelline', 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=80', 'caption-maybelline', 'Fig 3.2 — Conscious Product & Purpose Positioning', this)">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=300&q=60" alt="Maybelline 2" />
+                  </div>
+                </div>
+                <div class="visual-caption" id="caption-maybelline">Fig 3.1 — Inclusive Beauty & Community Belonging</div>
+              </div>
+            </div>
+
+            <div class="case-content-col">
+              <div>
+                <div class="case-client">MAYBELLINE • CORPORATE SOCIAL RESPONSIBILITY</div>
+                <h3 class="case-headline">Reframing beauty CSR around <em>lived inclusion and community trust</em></h3>
+
+                <div class="narrative-grid">
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ The Real Problem ]</div>
+                    <p class="narrative-text">
+                      In global beauty, CSR initiatives easily risk feeling detached from everyday consumers unless inclusion and mental/community well-being are woven directly into the brand’s core positioning.
+                    </p>
+                  </div>
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ Strategic Direction ]</div>
+                    <p class="narrative-text">
+                      Formulated a targeted Corporate Social Responsibility strategy focused on authentic community inclusion, cultural representation, and long-term brand equity with Gen-Z and millennial audiences.
+                    </p>
+                  </div>
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ Studio Notes ]</div>
+                    <p class="narrative-text">
+                      Designed to bridge mass-market commercial appeal with genuine ethical advocacy.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="case-actions">
+                <a href="./pdfs/maybelline-csr.pdf" target="_blank" class="btn-editorial">Open Maybelline CSR Deck (PDF) ↗</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CASE 04: L'ÉCHAPPÉE BIÈRE & BRASSERIE LA GOUDALE -->
+        <article class="case-world reveal" data-category="brand-csr" data-cursor="[ French Craft & Brewery Consultancy ↗ ]">
+          <div class="case-top-bar">
+            <span>[ WORLD 04 — NORTHERN FRANCE ]</span>
+            <div class="case-badges">
+              <span class="badge">Brand & CSR Strategy</span>
+              <span class="badge">360° Market Consultancy</span>
+              <span class="badge">Operational Scalability</span>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-visual-col">
+              <img class="case-main-img" id="img-biere" src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80" alt="L'Échappée Bière & Brasserie La Goudale" />
+              <div class="case-img-overlay">
+                <div class="case-thumb-strip">
+                  <div class="case-thumb active-thumb" onclick="swapCaseImg('img-biere', 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80', 'caption-biere', 'Fig 4.1 — L’Échappée Bière: Sustainable Beer Tourism & Growth', this)">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=300&q=60" alt="Biere 1" />
+                  </div>
+                  <div class="case-thumb" onclick="swapCaseImg('img-biere', 'https://images.unsplash.com/photo-1532634922-8fe0b757fb13?auto=format&fit=crop&w=1200&q=80', 'caption-biere', 'Fig 4.2 — Brasserie La Goudale: Heritage Brewery Process & Scale', this)">
+                    <img src="https://images.unsplash.com/photo-1532634922-8fe0b757fb13?auto=format&fit=crop&w=300&q=60" alt="Goudale 2" />
+                  </div>
+                </div>
+                <div class="visual-caption" id="caption-biere">Fig 4.1 — L’Échappée Bière: Sustainable Beer Tourism & Growth</div>
+              </div>
+            </div>
+
+            <div class="case-content-col">
+              <div>
+                <div class="case-client">L'ÉCHAPPÉE BIÈRE & BRASSERIE LA GOUDALE • FRANCE</div>
+                <h3 class="case-headline">Scaling French brewing heritage through <em>sustainable tourism & operational flow</em></h3>
+
+                <div class="narrative-grid">
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ L'Échappée Bière — 360° Market Consultancy ]</div>
+                    <p class="narrative-text">
+                      Conducted a full-spectrum market consultancy for France’s premier beer-tourism agency to unlock new strategic growth avenues while embedding sustainable business practices into regional experiential travel.
+                    </p>
+                  </div>
+                  <div class="narrative-item">
+                    <div class="narrative-label">[ Brasserie La Goudale — Operations & Scalability ]</div>
+                    <p class="narrative-text">
+                      Modeled operational improvements for the iconic northern French brewery to sharpen process efficiency and support long-term production scalability without losing artisanal soul.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="case-actions">
+                <a href="./pdfs/lechappee-biere.pdf" target="_blank" class="btn-editorial">L'Échappée Bière PDF ↗</a>
+                <a href="./pdfs/la-goudale.pdf" target="_blank" class="btn-editorial ghost">Brasserie La Goudale PDF ↗</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- [ 03 ] RESEARCH & CONCEPT ARCHIVE (THESES + ACCOR + AXA + AI LAB) -->
+    <section id="archive" class="section-block">
+      <div class="section-header reveal">
+        <div>
+          <span class="section-index">[ 03 / Research, Theses & Concept Archive ]</span>
+          <h2 class="section-title">Published thought pieces & <em>strategy capsules</em></h2>
+        </div>
+        <p class="section-note">
+          Academic deep-dives from Lille and compact corporate frameworks for hospitality, insurance, and digital retention.
+        </p>
+      </div>
+
+      <div class="archive-grid">
+        <!-- Thesis 1: Sustainable Hospitality -->
+        <article class="archive-card reveal" data-category="brand-csr">
+          <div class="archive-img-wrap">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80" alt="Sustainable Hospitality Thesis" />
+            <span class="archive-tag-overlay">[ BACHELOR'S THESIS • IÉSEG LILLE ]</span>
+          </div>
+          <div class="archive-body">
+            <div>
+              <h3>Can Sustainable Business Practices Help the Hospitality Industry Adapt?</h3>
+              <p>
+                An independent research study examining how ecological transition, ethical operations, and guest trust act as resilience engines for global hotels and hospitality brands during industry disruption.
+              </p>
+            </div>
+            <div class="case-actions">
+              <a href="./pdfs/bachelor-thesis-hospitality.pdf" target="_blank" class="btn-editorial">Read Hospitality Thesis (PDF) ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- AI & Digital Media Experiments -->
+        <article class="archive-card reveal reveal-delay-1" data-category="storytelling">
+          <div class="archive-img-wrap">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80" alt="Digital Media & AI Retention Experiments" />
+            <span class="archive-tag-overlay">[ INDEPENDENT VENTURES • 2024–2026 ]</span>
+          </div>
+          <div class="archive-body">
+            <div>
+              <h3>Algorithm Retention, AI Pacing & Executive Consulting Frameworks</h3>
+              <p>
+                From testing content variables (AI voiceovers, visual pacing, hook structures) to auditing complex data-heavy manuscripts and building executive strategy decks for leadership alignment.
+              </p>
+            </div>
+            <div class="case-actions">
+              <span class="badge">Prompt Engineering & Gen-AI</span>
+              <span class="badge">Elate Digital Campaigns</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Accor S.A. -->
+        <article class="archive-card reveal" data-category="brand-csr">
+          <div class="archive-img-wrap">
+            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=900&q=80" alt="Accor S.A. Solidarity Strategy" />
+            <span class="archive-tag-overlay">[ ACCOR S.A. • EMPLOYER BRANDING ]</span>
+          </div>
+          <div class="archive-body">
+            <div>
+              <h3>Accor S.A. — Corporate "Solidarity Strategy"</h3>
+              <p>
+                Developed a human-centric corporate solidarity framework designed to drive talent acquisition, spark internal innovation, and strengthen employer branding across global hospitality teams.
+              </p>
+            </div>
+            <div class="case-actions">
+              <a href="./pdfs/accor-solidarity.pdf" target="_blank" class="btn-editorial ghost">Attach Accor Deck Later ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- AXA S.A. -->
+        <article class="archive-card reveal reveal-delay-1" data-category="crm-alignment">
+          <div class="archive-img-wrap">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80" alt="AXA S.A. Brand Ambassador Framework" />
+            <span class="archive-tag-overlay">[ AXA S.A. • INTERNAL & EXTERNAL ALIGNMENT ]</span>
+          </div>
+          <div class="archive-body">
+            <div>
+              <h3>AXA S.A. — Brand Ambassador Architecture</h3>
+              <p>
+                Designed comprehensive brand ambassador frameworks to align internal employees and external customers around shared corporate values and authentic advocacy.
+              </p>
+            </div>
+            <div class="case-actions">
+              <a href="./pdfs/axa-ambassador.pdf" target="_blank" class="btn-editorial ghost">Attach AXA Deck Later ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- [ 04 ] GEOGRAPHIES & FOUNDATIONS -->
+    <section id="geographies" class="section-block">
+      <div class="section-header reveal">
+        <div>
+          <span class="section-index">[ 04 / Geographies & Foundations ]</span>
+          <h2 class="section-title">Kolkata → Mumbai → Lille → Germany → <em>India</em></h2>
+        </div>
+        <p class="section-note">
+          Five chapters that shaped how I listen, adapt across cultures, and build strategy with a global-yet-grounded lens.
+        </p>
+      </div>
+
+      <div class="geo-timeline reveal">
+        <div class="geo-stop active-stop">
+          <span class="geo-step-num">CHAPTER 01</span>
+          <div class="geo-city">Kolkata & Mumbai</div>
+          <p class="geo-desc">Where the rhythm started—classical Kathak roots, sharp storytelling instincts, and early digital campaign curation at Elate Digital.</p>
+        </div>
+        <div class="geo-stop">
+          <span class="geo-step-num">CHAPTER 02</span>
+          <div class="geo-city">Lille, France</div>
+          <p class="geo-desc">5 years at IÉSEG School of Management. Bachelor in International Business (3.86 GPA) & MSc in Digital Marketing & CRM (3.79 GPA).</p>
+        </div>
+        <div class="geo-stop">
+          <span class="geo-step-num">CHAPTER 03</span>
+          <div class="geo-city">The Netherlands</div>
+          <p class="geo-desc">Leading sustainable tall-ship storytelling, investor crowdfunding, and transparent brand systems at EcoClipper.</p>
+        </div>
+        <div class="geo-stop">
+          <span class="geo-step-num">CHAPTER 04</span>
+          <div class="geo-city">Germany</div>
+          <p class="geo-desc">Inside Adidas AG headquarters—bridging sales & project workflows, internal UX architecture, and stakeholder alignment.</p>
+        </div>
+        <div class="geo-stop">
+          <span class="geo-step-num">CHAPTER 05</span>
+          <div class="geo-city">Back to India</div>
+          <p class="geo-desc">Bringing European strategic rigor, sustainable thinking, and AI-assisted creative execution into independent consulting & brand building.</p>
+        </div>
+      </div>
+
+      <div class="ieseg-feature-bar reveal">
+        <div>
+          <span class="section-index" style="margin-bottom:4px;">[ ACADEMIC FOUNDATION — SUBTLE NOTE ]</span>
+          <h4>IÉSEG School of Management, Lille (2018 – 2023)</h4>
+          <p>
+            MSc in Digital Marketing & CRM + Bachelor in International Business — specializing in CRM Strategy, CSR, Sustainable Innovation, Business Ethics, Change Management, and People Management.
+          </p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="./pdfs/adidas-masters-thesis.pdf" target="_blank" class="btn-editorial">Master's Report (Adidas) ↗</a>
+          <a href="./pdfs/bachelor-thesis-hospitality.pdf" target="_blank" class="btn-editorial ghost">Bachelor's Thesis (Hospitality) ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- [ 05 ] OUTSIDE THE BRIEF / STUDIO NOTES -->
+    <section id="vibe" class="section-block">
+      <div class="section-header reveal">
+        <div>
+          <span class="section-index">[ 05 / Outside the Brief ]</span>
+          <h2 class="section-title">Equal parts <em>chill & serious</em></h2>
+        </div>
+        <p class="section-note">
+          Because the way a strategist thinks is shaped by everything she dances to, reads, and laughs at after hours.
+        </p>
+      </div>
+
+      <div class="vibe-bento">
+        <div class="vibe-card reveal">
+          <div class="vibe-img">
+            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=900&q=80" alt="Dance — Kathak, Salsa, Jazz, Street, Bollywood" />
+          </div>
+          <div class="vibe-content">
+            <span class="meta-label">[ Movement & Rhythm ]</span>
+            <h3>Trained in Classical Kathak. Fluent in Salsa, Jazz, Street & Bollywood.</h3>
+            <p>
+              Dance taught me pacing, discipline, and how to hold an audience’s attention without saying a word—whether it’s classical footwork or pure Bollywood energy.
+            </p>
+          </div>
+        </div>
+
+        <div class="vibe-card reveal reveal-delay-1">
+          <div class="vibe-img">
+            <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=900&q=80" alt="Old School Literature — Shakespeare to Thrillers" />
+          </div>
+          <div class="vibe-content">
+            <span class="meta-label">[ Pages & Perspectives ]</span>
+            <h3>From Shakespearean Drama to Sharp Page-Turner Thrillers.</h3>
+            <p>
+              An old-school fictional literature head obsessed with human motives, plot architecture, and why people see the same world through completely different lenses.
+            </p>
+          </div>
+        </div>
+
+        <div class="vibe-card reveal reveal-delay-2">
+          <div class="vibe-img">
+            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=900&q=80" alt="Memes, Pop Culture & Conscious Living" />
+          </div>
+          <div class="vibe-content">
+            <span class="meta-label">[ Internet Fluency & Conscience ]</span>
+            <h3>Communicates in Memes. Deeply Conscious About the World.</h3>
+            <p>
+              I take the work seriously, never myself. I can debate corporate ethics and sustainable supply chains at 2 PM and reply solely in hyper-specific memes by 2:15 PM.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Vibe Switcher -->
+      <div class="meme-translator reveal">
+        <div>
+          <span class="meta-label">[ LIVE BRAIN TRANSLATOR — CLICK TO TOGGLE MOOD ]</span>
+          <div class="meme-quote" id="moodQuote">“Translating fragmented stakeholder data into human-centered strategic alignment.”</div>
+        </div>
+        <button class="btn-editorial" onclick="toggleMood()">Switch to Unfiltered Mode ↻</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer container reveal">
+    <span class="section-index">[ 06 / Initiate a Conversation ]</span>
+    <h2 class="footer-big-title">Let’s build stories <em>worth trusting.</em></h2>
+    <div class="footer-links">
+      <a href="mailto:rishika.banerjee99@gmail.com" class="btn-editorial">rishika.banerjee99@gmail.com ↗</a>
+      <a href="https://linkedin.com/in/rishikabanerjee" target="_blank" class="btn-editorial ghost">LinkedIn / in/rishikabanerjee ↗</a>
+      <button class="btn-editorial ghost" onclick="openPdfGuide()">[ How to Drop Your PDFs into GitHub ]</button>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--salmon-muted);">
+      DESIGNED IN SALMON PINK (#FCB5AC) & TEAL GREEN (#3D5B59) • RISHIKA BANERJEE © 2026
+    </p>
+  </footer>
+
+  <!-- MODAL FOR PDF LINKING GUIDE -->
+  <div class="modal-backdrop" id="pdfModal" onclick="if(event.target===this) closePdfGuide()">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>How to Connect Your Project PDFs</h3>
+        <button class="close-modal" onclick="closePdfGuide()">[ Close ✕ ]</button>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--salmon-soft); margin-bottom: 14px;">
+        Every button on this portfolio is already wired up! Just create a folder named <code>pdfs</code> inside your GitHub repository (<code>r-b17.github.io/newstyle/pdfs/</code>) and upload your PDF files using these exact names (or send me your exact filenames and I’ll update them for you):
+      </p>
+      <table class="pdf-list-table">
+        <thead>
+          <tr>
+            <th>Project / Thesis</th>
+            <th>Filename to Put in <code>/pdfs/</code> Folder</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Adidas AG Strategy</td><td><code>./pdfs/adidas-strategy.pdf</code></td></tr>
+          <tr><td>MSc Report (Adidas CRM/CSR)</td><td><code>./pdfs/adidas-masters-thesis.pdf</code></td></tr>
+          <tr><td>EcoClipper Storytelling</td><td><code>./pdfs/ecoclipper-storytelling.pdf</code></td></tr>
+          <tr><td>Maybelline CSR Strategy</td><td><code>./pdfs/maybelline-csr.pdf</code></td></tr>
+          <tr><td>L'Échappée Bière</td><td><code>./pdfs/lechappee-biere.pdf</code></td></tr>
+          <tr><td>Brasserie La Goudale</td><td><code>./pdfs/la-goudale.pdf</code></td></tr>
+          <tr><td>Bachelor's Thesis (Hospitality)</td><td><code>./pdfs/bachelor-thesis-hospitality.pdf</code></td></tr>
+          <tr><td>Accor S.A. / AXA S.A.</td><td><code>./pdfs/accor-solidarity.pdf</code> & <code>./pdfs/axa-ambassador.pdf</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // 1. Scroll Reveal Observer
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // 2. Custom Floating Cursor Pill (Nika Stern Style)
+    const cursorPill = document.getElementById('cursorPill');
+    document.addEventListener('mousemove', (e) => {
+      cursorPill.style.left = e.clientX + 'px';
+      cursorPill.style.top = (e.clientY - 18) + 'px';
+    });
+
+    document.querySelectorAll('[data-cursor]').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        cursorPill.textContent = item.getAttribute('data-cursor');
+        cursorPill.classList.add('active');
+      });
+      item.addEventListener('mouseleave', () => {
+        cursorPill.classList.remove('active');
+      });
+    });
+
+    // 3. Case World Image Switcher
+    function swapCaseImg(imgId, newSrc, captionId, newCaption, thumbEl) {
+      const mainImg = document.getElementById(imgId);
+      const captionEl = document.getElementById(captionId);
+      mainImg.style.opacity = '0.35';
+      setTimeout(() => {
+        mainImg.src = newSrc;
+        mainImg.style.opacity = '1';
+        captionEl.textContent = newCaption;
+      }, 160);
+
+      const parentStrip = thumbEl.parentElement;
+      parentStrip.querySelectorAll('.case-thumb').forEach(t => t.classList.remove('active-thumb'));
+      thumbEl.classList.add('active-thumb');
+    }
+
+    // 4. Pillar Filter Bar
+    const filterBtns = document.querySelectorAll('#pillarFilters .pillar-chip');
+    const filterableCards = document.querySelectorAll('[data-category]');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.getAttribute('data-filter');
+
+        filterableCards.forEach(card => {
+          if (cat === 'all' || card.getAttribute('data-category') === cat) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 5. Interactive Brain Mood Translator (Corporate vs Meme/Chill Mode)
+    const quotes = [
+      {
+        corp: "“Translating fragmented stakeholder data into human-centered strategic alignment.”",
+        chill: "“Getting sales and project teams on the same page without a 47-slide existential crisis.”"
+      },
+      {
+        corp: "“Formulating values-driven CSR frameworks that foster authentic community inclusion.”",
+        chill: "“Making sure brands actually care about humans and the planet instead of just posting a green square.”"
+      },
+      {
+        corp: "“Leveraging Shakespearean narrative arcs, Kathak rhythm, and Gen-AI pacing experiments.”",
+        chill: "“Equal parts classical discipline, old-school bookworm, and sending the exact right meme at the right second.”"
+      }
+    ];
+    let moodIndex = 0;
+    let isChill = false;
+
+    function toggleMood() {
+      const quoteEl = document.getElementById('moodQuote');
+      isChill = !isChill;
+      if (!isChill) {
+        moodIndex = (moodIndex + 1) % quotes.length;
+      }
+      quoteEl.textContent = isChill ? quotes[moodIndex].chill : quotes[moodIndex].corp;
+    }
+
+    // 6. PDF Guide Modal
+    function openPdfGuide() {
+      document.getElementById('pdfModal').classList.add('open');
+    }
+    function closePdfGuide() {
+      document.getElementById('pdfModal').classList.remove('open');
+    }
+  </script>
+</body>
+</html>
